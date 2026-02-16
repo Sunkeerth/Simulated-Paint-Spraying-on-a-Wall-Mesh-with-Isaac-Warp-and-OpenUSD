@@ -1,0 +1,4 @@
+output/textures/
+*.png
+*.jpg
+__pycache__/
