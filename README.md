@@ -1,109 +1,174 @@
 # 🚀 NVIDIA Warp + OpenUSD Industrial Spray Simulation
 
-A research-oriented physics-based spray painting simulation built using NVIDIA Isaac Warp and Pixar OpenUSD to model real-world industrial coating processes.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![OpenUSD](https://img.shields.io/badge/OpenUSD-3D%20Visualization-green)
+![NVIDIA Warp](https://img.shields.io/badge/NVIDIA-Warp-yellow)
+![Simulation](https://img.shields.io/badge/Simulation-Physics%20Based-orange)
+![Status](https://img.shields.io/badge/Status-Research%20Project-success)
 
-# 🎨 Simulated Paint Spraying on a Wall Mesh using Isaac Warp & OpenUSD
+A **research-oriented physics-based industrial spray painting simulation** built using **NVIDIA Isaac Warp** and **Pixar OpenUSD** to model real-world robotic coating workflows and visualize paint accumulation on a 3D wall surface.
 
-A physics-inspired spray painting simulation built using NVIDIA Isaac Warp and OpenUSD, demonstrating how paint particles accumulate over time on a wall surface and visualized in a fully animated 3D scene.
+---
 
-This project models a robotic/industrial spray-painting workflow with configurable spray parameters and real-time visualization.
+# 🎯 Project Overview
 
-🚀 Project Overview : 
+This project simulates an **industrial spray painting process** where a moving nozzle emits paint particles in a triangular fan pattern and gradually coats a wall surface.
 
-This simulation demonstrates:
+The simulation includes:
 
-A moving spray nozzle emitting paint in a triangular fan pattern
-Real-time paint accumulation on a wall surface
-Time-based texture updates mapped onto a 3D wall mesh
-Visualization using Pixar OpenUSD (usdview)
-The goal is to replicate an industrial robotic paint spraying process using physics-inspired computation and USD-based visualization.
+- Spray particle emission physics  
+- Paint accumulation over time  
+- Animated nozzle motion  
+- Real-time texture updates  
+- OpenUSD 3D visualization  
 
-Key Features : 
+The final output is visualized using **Pixar usdview**.
 
-✔️ Realistic spray emission simulation
-✔️ Adjustable spray pressure, width, and density
-✔️ Incremental paint accumulation over time
-✔️ Animated nozzle movement
-✔️ Texture-based surface update system
-✔️ OpenUSD 3D scene visualization
-✔️ Research-level simulation workflow 
+---
 
-Project Architecture :
+# 🧠 Key Features
 
-                 ┌────────────────────┐
-                 │   Spray Nozzle     │
-                 │ (Animated motion)  │
-                 └─────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │ Isaac Warp Kernel   │
-                │ Particle emission   │
-                │ Spray cone physics  │
-                └─────────┬──────────┘
-                          │
-                          ▼
-              ┌────────────────────────┐
-              │ Paint Accumulation     │
-              │ Texture buffer update  │
-              └─────────┬──────────────┘
-                        │
-                        ▼
-          ┌──────────────────────────────┐
-          │ OpenUSD Material + Texture   │
-          │ UV mapping + animation       │
-          └─────────┬────────────────────┘
-                    │
-                    ▼
-              🎬 usdview Visualization
+✔️ Physics-inspired spray emission simulation  
+✔️ Adjustable spray density, pressure, and width  
+✔️ Incremental paint accumulation on surface  
+✔️ Real-time texture updates  
+✔️ Animated spray nozzle movement  
+✔️ OpenUSD material & texture binding  
+✔️ usdview visualization support  
+✔️ Research-level simulation architecture  
 
-Project Structure :
+---
+
+# 🏗️ System Architecture
 
 Simulated-Paint-Spraying/
 │
-├── spray_warp.py              # Main simulation script
-├── README.md                  # Project documentation
+├── spray_warp.py # Main simulation script
+├── README.md # Documentation
 │
 ├── output/
-│   ├── final_scene.usda       # OpenUSD scene
-│   └── textures/              # Generated paint frames
-│       ├── frame_000.png
-│       ├── frame_001.png
-│       └── ...
+│ ├── final_scene.usda # OpenUSD scene file
+│ └── textures/ # Generated paint textures
+│ ├── frame_000.png
+│ ├── frame_001.png
+│ └── ...
 │
-├── images/                    # (Add screenshots here)
-├── video/                     # (Add demo video here)
+├── images/ # Add screenshots here
+├── video/ # Add demo video here 
 
 
-⚙️ How It Works :
+---
 
-1️⃣ Surface Modeling :
+# 🛠️ Technologies Used
+
+## 🔷 OpenUSD (Pixar Universal Scene Description)
+- 3D scene construction  
+- Material & texture binding  
+- Animation & visualization  
+
+🌐 https://openusd.org  
+🔗 https://github.com/PixarAnimationStudios/OpenUSD  
+
+---
+
+## 🔷 NVIDIA Isaac Warp
+- Physics-based spray simulation  
+- Particle emission modeling  
+- GPU/CPU accelerated kernel computation  
+
+🔗 https://github.com/NVIDIA/warp  
+
+---
+
+## 🔷 Python Libraries
+- **NumPy** — numerical computation  
+- **Pillow** — texture generation  
+- **pxr (USD API)** — OpenUSD scene creation  
+- **Warp** — simulation kernel  
+
+---
+
+# ⚙️ How It Works
+
+### 1️⃣ Surface Modeling
 A wall mesh is created using OpenUSD with UV mapping.
 
-2️⃣ Spray Simulation :
-Isaac Warp kernel generates a triangular fan spray using:
-Random particle emission
-Distance-based spread
-Adjustable spray density
+### 2️⃣ Spray Simulation
+Warp kernel generates triangular spray particles using:
+- Random emission  
+- Distance-based spread  
+- Adjustable spray density  
 
-3️⃣ Paint Accumulation : 
+### 3️⃣ Paint Accumulation
+Paint impacts wall and updates texture buffer per frame.
 
-Paint impact is stored in a texture buffer and updated every frame.
+### 4️⃣ Visualization
+Each frame saved as texture and mapped to wall material.  
+Viewed in **usdview**.
 
-4️⃣ Visualization : 
-Each frame is saved as a texture and applied to the wall material.
-The animation is visualized using usdview. 
+---
 
+# ▶️ How to Run
 
-▶️ How to Run :
-
-1. Install dependencies
+## Install dependencies
 pip install warp-lang numpy pillow
 
-2. Run simulation
-python3 spray_warp.py
-
-3. Open visualization
+## Open visualization
 usdview output/final_scene.usda
 
-Press ▶ Play in usdview.
+
+Press ▶ Play inside usdview.
+
+---
+
+# 🖼️ Results
+
+## Initial State
+(Add screenshot here)
+
+
+## Mid Spray
+(Add screenshot here)
+
+
+## Final Painted Wall
+(Add screenshot here)
+
+
+---
+
+# 🎥 Demo Video
+
+Upload video and add link:
+
+
+---
+
+# 🔬 Applications
+
+- Robotic spray painting simulation  
+- Industrial coating optimization  
+- Digital twin manufacturing  
+- Robotics research  
+- Computer graphics simulation  
+
+---
+
+# 🧪 Future Improvements
+
+- Full 3D particle simulation  
+- GPU CUDA acceleration  
+- Robotic arm integration  
+- RTX rendering  
+- Web visualization  
+
+---
+
+# 👨‍💻 Author
+
+**Sunkeerth**  
+AI & ML Engineer | Simulation Developer | Robotics & VR Enthusiast  
+
+---
+
+⭐ If you like this project, give it a star on GitHub.
